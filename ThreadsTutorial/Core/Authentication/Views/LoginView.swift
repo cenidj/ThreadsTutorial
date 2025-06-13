@@ -43,7 +43,7 @@ struct LoginView: View {
                 }
                 
                 Button {
-                    
+
                 } label: {
                     Text("Login")
                         .modifier(ThreadsAuthButtonModifier())
@@ -55,6 +55,7 @@ struct LoginView: View {
                 
                 NavigationLink {
                     RegistrationView()
+                        .navigationBarBackButtonHidden(true)
                 } label: {
                     HStack(spacing: 3) {
                         Text("Don't have an account?")
