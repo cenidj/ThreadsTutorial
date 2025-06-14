@@ -11,7 +11,7 @@ struct FeedView: View {
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
-                LazyVStack  {
+                LazyVStack {
                     ForEach(0..<10, id: \.self) { thread in
                         ThreadCell()
                     }
@@ -24,7 +24,7 @@ struct FeedView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing){
+            ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     
                 } label: {
