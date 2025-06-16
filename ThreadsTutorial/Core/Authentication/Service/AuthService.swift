@@ -7,7 +7,7 @@
 
 import Firebase
 import FirebaseAuth
-
+import FirebaseFirestore
 
 class AuthService {
     
@@ -24,7 +24,7 @@ class AuthService {
         do {
             let result = try await Auth.auth().signIn(withEmail: email, password: password)
             self.userSession = result.user
-            print("DEBUG: Signed in user \(result.user.uid)")
+            
         } catch {
             print("DEBUG: Failed to sign in with error \(error.localizedDescription)")
         }
@@ -35,6 +35,7 @@ class AuthService {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             self.userSession = result.user
+            try await uploadServiceData(withEmail: email, fullname: fullname, username: username, id: result.user.uid)
             print("DEBUG: Created user \(result.user.uid)")
         } catch {
             print("DEBUG: Failed to create user with error \(error.localizedDescription)")
@@ -44,5 +45,16 @@ class AuthService {
     func signOut() {
         try? Auth.auth().signOut() // signs out on backend
         self.userSession = nil // removes session locally and updates routing
+    }
+    
+    @MainActor
+    private func uploadServiceData(
+        withEmail email: String,
+        fullname: String,
+        username: String,
+        id: String) async throws {
+            let user = User(id: id, fullname: fullname, email: email, username: username)
+            guard let userData = try? Firestore.Encoder().encode(user) else { return }
+            try await Firestore.firestore().collection("users").document(id).setData(userData)
     }
 }
