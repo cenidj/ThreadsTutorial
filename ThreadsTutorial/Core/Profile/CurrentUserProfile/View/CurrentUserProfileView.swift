@@ -9,13 +9,7 @@ import SwiftUI
 
 struct CurrentUserProfileView: View {
     @StateObject var viewModel = CurrentProfileViewModel()
-    @State private var selectedFilter: ProfileThreadFilter = .threads
-    @Namespace var animationSpace
-    
-    private var filterBarWidth: CGFloat {
-        let count = CGFloat(ProfileThreadFilter.allCases.count)
-        return UIScreen.main.bounds.width / count - 20
-    }
+    @State private var showEditProfile = false
     
     private var currentUser: User? {
         return viewModel.currentUser
@@ -24,12 +18,11 @@ struct CurrentUserProfileView: View {
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
-                // bio and stats
                 VStack(spacing: 20) {
                     ProfileHeaderView(user: currentUser)
                     
                     Button {
-                        
+                        showEditProfile.toggle()
                     } label: {
                         Text("Edit Profile")
                             .font(.subheadline)
@@ -43,9 +36,12 @@ struct CurrentUserProfileView: View {
                             }
                     }
                     
-                    // user content list view
                     UserContentListView()
                 }
+                .sheet(isPresented: $showEditProfile, content: {
+                    EditProfileView()
+                        .environmentObject(viewModel)
+                })
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
