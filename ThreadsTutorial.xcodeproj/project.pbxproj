@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		900A5EF52E0119B600A6F0C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 900A5EF42E0119B600A6F0C3 /* GoogleService-Info.plist */; };
 		908242552DFD280500A074A7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 908242542DFD280500A074A7 /* FirebaseAuth */; };
 		908242572DFD280500A074A7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 908242562DFD280500A074A7 /* FirebaseFirestore */; };
 		908242592DFD280500A074A7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 908242582DFD280500A074A7 /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		900A5EF42E0119B600A6F0C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9054D2BC2DFBA59B0060DB6F /* ThreadsTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreadsTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -43,6 +45,7 @@
 			children = (
 				9054D2BE2DFBA59B0060DB6F /* ThreadsTutorial */,
 				9054D2BD2DFBA59B0060DB6F /* Products */,
+				900A5EF42E0119B600A6F0C3 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,6 +127,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				900A5EF52E0119B600A6F0C3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
