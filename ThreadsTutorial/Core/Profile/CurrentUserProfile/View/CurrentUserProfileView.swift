@@ -39,7 +39,10 @@ struct CurrentUserProfileView: View {
                     UserContentListView()
                 }
                 .sheet(isPresented: $showEditProfile, content: {
-                    EditProfileView()
+                    if let user = currentUser {
+                    
+                        EditProfileView(user: user)
+                    }
                 })
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
