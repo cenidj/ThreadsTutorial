@@ -27,7 +27,7 @@ struct ProfileView: View {
                         .clipShape(.rect(cornerRadius: 8))
                 }
                 
-                UserContentListView()
+                UserContentListView(user: user)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
